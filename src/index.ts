@@ -1,3 +1,5 @@
+export { analyzeCorpus, analyzeCorpusCollection } from "./collision-analysis.js";
+export type { CorpusAnalysis, CorpusCollectionAnalysis, CorpusDocument, SourceCollisionCount } from "./collision-analysis.js";
 export { decode, encode, findCodewordCollisions } from "./codec.js";
 export type { CodewordCollision } from "./codec.js";
 export {
