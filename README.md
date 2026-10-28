@@ -22,7 +22,6 @@ The repository includes a corpus scanner to measure collisions against real text
 
 ```sh
 npm install
-npm run corpus:fetch
 npm run check
 npm run analyze:collisions -- ./corpus
 npm run analyze:collisions -- ./corpus --json ./collision-report.json
