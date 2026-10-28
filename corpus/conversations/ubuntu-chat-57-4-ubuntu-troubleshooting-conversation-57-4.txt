@@ -1,0 +1,5 @@
+search restricted formats on the wiki... there is a guide
+wiki? i am sorry could u point me to the website?
+www.ubuntu.com
+i meant relative to installing a Sans font.
+you go to the wiki on www.ubuntu.com and search "restricted formats" and there will be a page called that. then on that page you search "sun java"

@@ -1,0 +1,6 @@
+make sure to uncomment that line, and the line under it...and comment out the two above it
+- i'm sorry, but could you clarify what you mean by uncomment and comment out?
+- so i put a # in front of these lines?
+ide1:0.deviceType = "atapi-cdrom"
+# Use this if you have an iso file instead of a CD
+no...put a # in front of the line that says "ide1:0.filename="auto detect" and the one below that

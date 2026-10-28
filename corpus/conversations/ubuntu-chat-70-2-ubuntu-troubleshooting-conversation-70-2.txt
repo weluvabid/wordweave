@@ -1,0 +1,23 @@
+its a dconf setting
+and its gnome-setting that handles it now
+gconf is what i'm trying to use..
+looks to be wrong... i tried the suggested path and it didn't work
+are you using gsettings?
+er, no
+i keep getting usage errors with gsettings. even with that
+having trouble figuring out what it wants
+whats the error
+exact message
+keeps giving the usage syntax
+trying to follow it, but nothing is working
+exact error
+try 'gsettings hoobajoo' and you'll see it
+for isntance
+but thats not remotely valid
+i'm trying to set, not get
+try get first
+it will tell you if your on the right path
+ok, i had tried to use that line only changing 'get' to 'set' and 'picture-uri' to the image path...
+no
+picture-uri is the key
+if you want help

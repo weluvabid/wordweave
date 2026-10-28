@@ -1,0 +1,1 @@
+yeah that's what I'm trying to setup, but I want this user to have no password so that it doesn't get prompted when sudoing for config scripts

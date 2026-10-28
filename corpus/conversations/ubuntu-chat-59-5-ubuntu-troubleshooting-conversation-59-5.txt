@@ -1,0 +1,6 @@
+use the command on my computer , didnt work , proposed to isntall vnc4...
+once x11vnc is running on the server, go to the laptop and issue the command 'vncviewer <serverIP>:0'
+sounds like there is no X on the server. On the server give the command 'ps ax | grep X' and see if you find a line with /usr/bin/X :0
+have root access .. its an ubuntu destop 8.10
+sisnt that the command i just used ?
+not quite...notice the missing 'x' "ubuntu" not "xubuntu"

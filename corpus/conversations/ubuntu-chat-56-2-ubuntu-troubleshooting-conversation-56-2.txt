@@ -1,0 +1,8 @@
+well probably but i don't think i get to the decide that... the ISP doesn't offer DHCP i think
+it has to offer something because it needs to assign your ip
+well yes... it offers pppoe
+not if he doesn't have internet =P
+oh i see the picture now
+i thought he already had internet but was configuring another interface
+no he has no access to internet at all
+i know that now ;)

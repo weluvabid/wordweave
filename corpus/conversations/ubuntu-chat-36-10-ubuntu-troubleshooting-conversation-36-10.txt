@@ -1,0 +1,4 @@
+Just use one of the official mirrors
+whats wrong with apt-cacher or apt-mirror?
+but in my case it will be a huge gain :)
+Yeah, I know what squid is, in fact I use Varnish, but setting a repo would be more necessity for me

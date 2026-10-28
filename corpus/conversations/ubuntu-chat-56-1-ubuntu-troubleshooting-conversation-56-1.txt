@@ -1,0 +1,7 @@
+it keeps on saying default gateway invalid
+just set the pool on the router for like 10 addresses (ie. 192.168.1.100-109) and set the computer to 192.168.1.105
+they can be the same address
+that's kind of funny, that's EXACTLY how I have it!
+your neighbors house number is not the same as yours...the postman gets confused and so does your router
+so set the pool for like 10 addresses and use one from that pool on the puter
+sorry, I don't understand the analogy

@@ -1,0 +1,1 @@
+this is the only sound card installed now. the old one was removed and the on board is already dissabled. and I don't think that I can set this EMU as the default sound card in the BIOS... I think that there is no such an option

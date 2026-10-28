@@ -1,16 +1,21 @@
 #!/usr/bin/env node
 /* global fetch, URLSearchParams, AbortSignal, setTimeout */
 import { createHash } from "node:crypto";
-import { mkdir, readFile, writeFile } from "node:fs/promises";
+import { mkdtemp, mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
+import { tmpdir } from "node:os";
+import { execFile as execFileCallback } from "node:child_process";
+import { promisify } from "node:util";
 import process from "node:process";
 
+const execFile = promisify(execFileCallback);
 const ROOT = process.cwd();
 const CORPUS_DIR = resolve(ROOT, "corpus");
 const MANIFEST_PATH = join(CORPUS_DIR, "manifest.json");
 const USER_AGENT = "WordWeave-CorpusResearch/1.0 (reproducible collision analysis)";
 const TOKEN_PATTERN = /[\p{L}\p{M}\p{N}_]+(?:['’-][\p{L}\p{M}\p{N}_]+)*/gu;
-const TARGETS = Object.freeze({ literature: 300_000, technical: 300_000, general: 400_000 });
+const TARGETS = Object.freeze({ literature: 300_000, technical: 300_000, conversations: 50_000 });
+const TOTAL_TARGET = Object.values(TARGETS).reduce((sum, target) => sum + target, 0);
 const REQUEST_DELAY_MS = 350;
 
 function log(message) {
@@ -53,15 +58,6 @@ const PYTHON_DOC_PATHS = [
   "Doc/library/unittest.rst", "Doc/library/urllib.rst", "Doc/library/uuid.rst",
   "Doc/library/venv.rst", "Doc/howto/argparse.rst", "Doc/howto/functional.rst",
   "Doc/howto/logging.rst", "Doc/howto/regex.rst", "Doc/howto/sockets.rst",
-];
-
-const WIKIPEDIA_QUERIES = [
-  "history of science", "world history", "geography", "climate change", "ecology",
-  "mathematics", "physics", "chemistry", "biology", "computer science",
-  "technology", "economics", "education", "agriculture", "architecture",
-  "literature", "music history", "visual arts", "philosophy", "linguistics",
-  "medicine", "public health", "astronomy", "oceanography", "anthropology",
-  "archaeology", "political history", "transportation", "food history", "energy",
 ];
 
 function tokenCount(text) {
@@ -127,6 +123,33 @@ async function fetchText(url, { accept = "text/plain", retries = 4 } = {}) {
     }
   }
   throw lastError instanceof Error ? lastError : new Error(`Unable to fetch ${url}`);
+}
+
+async function fetchBytes(url, { retries = 4 } = {}) {
+  let lastError;
+  for (let attempt = 0; attempt < retries; attempt += 1) {
+    try {
+      const response = await fetch(url, {
+        headers: { "User-Agent": USER_AGENT, Accept: "application/zip, application/octet-stream" },
+        signal: AbortSignal.timeout(120_000),
+      });
+      if (!response.ok) throw new Error(`HTTP ${response.status} for ${url}`);
+      return Buffer.from(await response.arrayBuffer());
+    } catch (error) {
+      lastError = error;
+      if (attempt + 1 < retries) await sleep(1_000 * (attempt + 1));
+    }
+  }
+  throw lastError instanceof Error ? lastError : new Error(`Unable to fetch ${url}`);
+}
+
+async function findNamedFiles(directory, targetName, matches = []) {
+  for (const entry of await readdir(directory, { withFileTypes: true })) {
+    const path = join(directory, entry.name);
+    if (entry.isDirectory()) await findNamedFiles(path, targetName, matches);
+    else if (entry.isFile() && entry.name === targetName) matches.push(path);
+  }
+  return matches;
 }
 
 function sleep(ms) {
@@ -281,83 +304,93 @@ async function fetchTechnical(manifest) {
   }
 }
 
-async function wikipediaSearch(query) {
-  const params = new URLSearchParams({
-    action: "query", list: "search", srsearch: query, srlimit: "20", srnamespace: "0",
-    format: "json", formatversion: "2",
-  });
-  const response = await fetchText(`https://en.wikipedia.org/w/api.php?${params}`, {
-    accept: "application/json",
-  });
-  const data = JSON.parse(response);
-  return data.query?.search ?? [];
-}
+async function fetchConversations(manifest) {
+  const target = TARGETS.conversations;
+  log(`\n[Natural conversations] Target: ${target.toLocaleString()} tokens`);
 
-async function wikipediaExtract(pageIds) {
-  const params = new URLSearchParams({
-    action: "query", pageids: pageIds.join("|"), prop: "extracts|info|revisions",
-    explaintext: "1", exsectionformat: "plain", inprop: "url", rvprop: "ids",
-    format: "json", formatversion: "2",
-  });
-  const response = await fetchText(`https://en.wikipedia.org/w/api.php?${params}`, {
-    accept: "application/json",
-  });
-  const data = JSON.parse(response);
-  return data.query?.pages ?? [];
-}
-
-async function fetchGeneral(manifest) {
-  log(`\n[General prose] Target: ${TARGETS.general.toLocaleString()} tokens`);
-  const knownIds = new Set();
-  for (const item of manifest.documents.filter((record) => record.category === "general")) {
-    if (await localFileMatches(item)) knownIds.add(item.id);
-  }
-  const pageById = new Map();
-  for (const query of WIKIPEDIA_QUERIES) {
-    if (categoryTokens(manifest, "general") >= TARGETS.general) break;
-    try {
-      const results = await wikipediaSearch(query);
-      for (const result of results) pageById.set(String(result.pageid), result);
-    } catch (error) {
-      const detail = error instanceof Error ? error.message : String(error);
-      warn(`  Search skipped (${query}): ${detail}`);
+  const existingRecords = manifest.documents.filter((item) => item.category === "conversations");
+  if (manifest.ubuntuChatLogsComplete && existingRecords.length > 0) {
+    const verified = await Promise.all(existingRecords.map(localFileMatches));
+    if (verified.every(Boolean)) {
+      log(`  Reusing ${existingRecords.length} verified conversation files`);
+      return;
     }
-    await sleep(REQUEST_DELAY_MS);
+  }
+  if (categoryTokens(manifest, "conversations") >= target) {
+    log("  Target already met; reusing verified local documents");
+    return;
   }
 
-  const candidates = [...pageById.values()].sort((a, b) => a.pageid - b.pageid);
-  for (
-    let offset = 0;
-    offset < candidates.length && categoryTokens(manifest, "general") < TARGETS.general;
-    offset += 20
-  ) {
-    const batch = candidates
-      .slice(offset, offset + 20)
-      .filter((page) => !knownIds.has(`wikipedia-${page.pageid}`));
-    if (batch.length === 0) continue;
-    try {
-      const pages = await wikipediaExtract(batch.map((page) => page.pageid));
-      for (const page of pages) {
-        if (categoryTokens(manifest, "general") >= TARGETS.general) break;
-        const text = (page.extract ?? "").trim();
-        if (tokenCount(text) < 250) continue;
-        const pageUrl = page.fullurl || `https://en.wikipedia.org/?curid=${page.pageid}`;
-        await saveDocument(manifest, {
-          category: "general", id: `wikipedia-${page.pageid}`, title: page.title,
-          url: pageUrl,
-          license:
-            "Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0); article content may include separately licensed material",
-          attribution:
-            `Wikipedia contributors, “${page.title}”, revision ${page.revisions?.[0]?.revid ?? "unknown"}`,
-          text,
-        });
-        knownIds.add(`wikipedia-${page.pageid}`);
-        log(`  Added ${page.title} (${tokenCount(text).toLocaleString()} tokens)`);
+  const archiveUrl = "https://zissou.infosci.cornell.edu/convokit/datasets/ubuntu-chat-logs/ubuntu-chat-logs.zip";
+  const sourcePage = "https://convokit.cornell.edu/documentation/chatlogs.html";
+  const temporaryDirectory = await mkdtemp(join(tmpdir(), "wordweave-ubuntu-chat-"));
+  const archivePath = join(temporaryDirectory, "ubuntu-chat-logs.zip");
+  const extractedDirectory = join(temporaryDirectory, "extracted");
+
+  try {
+    log("  Downloading the Ubuntu Chat Logs corpus from ConvoKit (CC BY 4.0)");
+    await writeFile(archivePath, await fetchBytes(archiveUrl));
+    await mkdir(extractedDirectory, { recursive: true });
+    await execFile("unzip", ["-q", archivePath, "-d", extractedDirectory], { maxBuffer: 16 * 1024 * 1024 });
+
+    const utteranceFiles = await findNamedFiles(extractedDirectory, "utterances.jsonl");
+    if (utteranceFiles.length === 0) {
+      throw new Error("Archive did not contain utterances.jsonl; refusing to create an empty corpus");
+    }
+
+    const conversations = new Map();
+    for (const utteranceFile of utteranceFiles) {
+      const lines = (await readFile(utteranceFile, "utf8")).split(/\r?\n/u);
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        let utterance;
+        try {
+          utterance = JSON.parse(line);
+        } catch {
+          continue;
+        }
+        const text = typeof utterance.text === "string" ? utterance.text.trim() : "";
+        const conversationId = utterance.conversation_id ?? utterance.conversationId;
+        if (!text || conversationId === undefined || conversationId === null) continue;
+        const key = String(conversationId);
+        if (!conversations.has(key)) conversations.set(key, []);
+        conversations.get(key).push({ timestamp: utterance.timestamp, text });
       }
-    } catch (error) {
-      warn(`  Article batch skipped: ${error instanceof Error ? error.message : String(error)}`);
     }
-    await sleep(REQUEST_DELAY_MS);
+
+    let added = 0;
+    for (const [conversationId, utterances] of conversations) {
+      const id = `ubuntu-chat-${conversationId}`;
+      const url = `${sourcePage}#conversation-${encodeURIComponent(conversationId)}`;
+      const existing = manifest.documents.find((item) => item.id === id && item.url === url);
+      if (existing && await localFileMatches(existing)) continue;
+
+      utterances.sort((a, b) => {
+        const left = Number(a.timestamp);
+        const right = Number(b.timestamp);
+        return Number.isFinite(left) && Number.isFinite(right) ? left - right : 0;
+      });
+      const text = utterances.map((utterance) => utterance.text).join("\n");
+      if (tokenCount(text) < 20) continue;
+      await saveDocument(manifest, {
+        category: "conversations",
+        id,
+        title: `Ubuntu troubleshooting conversation ${conversationId}`,
+        url,
+        license: "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+        attribution: `Ubuntu Chat Logs Corpus, distributed by ConvoKit/CornellNLP; source dataset documentation: ${sourcePage}`,
+        text,
+      });
+      added += 1;
+    }
+    manifest.ubuntuChatLogsComplete = true;
+    await writeManifest(manifest);
+    log(`  Processed ${conversations.size} conversations; added or refreshed ${added} documents`);
+  } catch (error) {
+    warn(`  Conversation corpus unavailable: ${error instanceof Error ? error.message : String(error)}`);
+    warn("  Existing verified conversation files were preserved; retry npm run corpus:fetch later.");
+  } finally {
+    await rm(temporaryDirectory, { recursive: true, force: true });
   }
 }
 
@@ -375,12 +408,12 @@ function printSummary(manifest) {
       `  ${category.padEnd(12)} ${tokens.toLocaleString().padStart(10)} tokens / ${TARGETS[category].toLocaleString()} (${state})`,
     );
   }
-  log(`  ${"TOTAL".padEnd(12)} ${total.toLocaleString().padStart(10)} tokens / 1,000,000`);
+  log(`  ${"TOTAL".padEnd(12)} ${total.toLocaleString().padStart(10)} tokens / ${TOTAL_TARGET.toLocaleString()}`);
   log(`  Documents: ${manifest.documents.length}`);
   log(`  Manifest:  ${relative(ROOT, MANIFEST_PATH)}`);
-  if (total < 1_000_000) {
+  if (total < TOTAL_TARGET) {
     warn(
-      "\nCorpus is below the 1-million-token target. Re-run the command to resume or extend collection.",
+      "\nCorpus is below the combined collection target. Re-run the command to resume or extend collection.",
     );
   }
 }
@@ -391,9 +424,10 @@ async function main() {
       [
         "Usage: npm run corpus:fetch",
         "",
-        "Downloads public-domain literature and Python documentation into ./corpus.",
-        "Wikipedia prose is optional; pass --wikipedia to attempt collection (rate limits may apply).",
+        "Downloads public-domain literature, Python documentation, and Ubuntu chat conversations into ./corpus.",
+        "Wikipedia API collection has been removed. Ubuntu Chat Logs are distributed under CC BY 4.0 by ConvoKit.",
         "The operation is resumable; see corpus/manifest.json for source, license, revision, and SHA-256 metadata.",
+        "The conversation archive is extracted with the system unzip command (available by default on macOS).",
       ].join("\n"),
     );
     return;
@@ -402,11 +436,7 @@ async function main() {
   const manifest = await readManifest();
   await fetchLiterature(manifest);
   await fetchTechnical(manifest);
-  if (process.argv.slice(2).includes("--wikipedia")) {
-    await fetchGeneral(manifest);
-  } else {
-    log("\n[General prose] Skipped (pass --wikipedia to enable Wikipedia requests)");
-  }
+  await fetchConversations(manifest);
   await writeManifest(manifest);
   printSummary(manifest);
 }

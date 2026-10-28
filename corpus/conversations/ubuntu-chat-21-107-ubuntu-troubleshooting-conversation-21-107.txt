@@ -1,0 +1,2 @@
+I don't know about converting the files. Could you try to open the file with mplayer and give me the error through pastebin?
+now i am getting no error, i play with mplayer and it just opened blank screen, movie not playing just still there

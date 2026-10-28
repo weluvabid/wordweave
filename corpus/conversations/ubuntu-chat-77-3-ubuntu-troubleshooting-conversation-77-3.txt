@@ -1,0 +1,5 @@
+wont that change everything incoming from the eth0.10 interface and rewrite the source to 100.10 ?
+yup
+oh true
+then everything else will stop working
+mmhh

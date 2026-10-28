@@ -1,0 +1,2 @@
+mail? which one?
+because you can't. you have to chmod 700 /bin/restart-mldonkey and get rid of the /bin/sh

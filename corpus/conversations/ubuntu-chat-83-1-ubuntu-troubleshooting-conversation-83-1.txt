@@ -1,0 +1,13 @@
+but FAT didnt help either
+then it mounted read/write sucessfully
+a file named test was created in the formerly unwritable folder
+you can now access it on /mnt
+the folder is still not writable
+I can not
+I am trying to copy files to this usb, and still can not
+read-only
+I've just proven you can write to the disk
+that works, too..so apparently I should try copying the files from gui
+not from gui*
+are you %100 sure you're not moving them by mistake ?
+and you're copying them into /mnt

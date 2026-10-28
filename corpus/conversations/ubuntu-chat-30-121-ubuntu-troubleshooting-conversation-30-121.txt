@@ -1,0 +1,4 @@
+16.04.2 LTS if that's what you meant
+why not systemctl?
+16.04 had some network bug like that in the start, should be fixxed by now
+wich chipset are you on make?

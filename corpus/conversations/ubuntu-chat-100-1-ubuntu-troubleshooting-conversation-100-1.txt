@@ -1,0 +1,8 @@
+ok.. but you can say 'Add new connection' in the network tool
+but it made eth1
+?
+you don't need it in ubuntu
+no. don't assume things if you don't know anything about it.
+which output?
+enable the 'universe' repository
+its enabled but how am i gonna download if i have no connection?

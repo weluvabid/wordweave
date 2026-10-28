@@ -1,0 +1,14 @@
+I do not want go to the Windows...
+But you're only supposed to use one.  Why do you need more than one.
+elnet only for check, I'm using ssh and check ssh port
+Please restate your issue, (I'm pretty sure I've missunderstood).
+I think, it's a low-lewel problem with a driver or something like that
+With a driver?  What driver could it be?
+What is the standard port for telent?
+21
+So you are able to initiate a telnet connection via port 23  Right?
+mm... in Windows on that computer, not on server-pc
+12.04
+I not change anything at server-pc, and restarn only from one system to another on my work pc
+What?  (Can you make that a little more clear, not sure I understand what you just said.)
+192.168.1.2 is a Ubuntu 13.04 PC?

@@ -1,0 +1,7 @@
+it changes all the units but mem for me
+each time you press e, the units should change
+the units do change, for everything but mem
+I thought you meant e didn't change any units
+Can you give an example number before and also what it is changed to by e?
+each time time you press e the whole output will update. The important thing is the memory units. Do the VIRT, RES and SHR columns not change units when you press e?
+that is just a normal refresh / update. The VIRT, RES and SHR columns don't change units though when you press e?

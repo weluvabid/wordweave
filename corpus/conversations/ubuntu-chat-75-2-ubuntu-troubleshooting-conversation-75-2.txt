@@ -1,0 +1,5 @@
+uhh.. what are you talkng about? your friend's computer or your install cd going bad?
+you sure your processor is 64bit? it doesnt look mainstream
+you should ask #kernel about your processor..
+it's 64bit
+i know its 64bit.. but there's a bios update.. also the um linux kernel may work better at 32-bit with ur processor at the moment.. it's also why i mention #kernel..

@@ -1,0 +1,6 @@
+i don't understand how "pollute the local directory" comes into play there.
+or what the overall prupose is
+swapis about ram, not about cpu
+again, I'm not worried about cpu
+then why do you stop processes? it wont help with ram allocation
+I want to free up ram for other processes

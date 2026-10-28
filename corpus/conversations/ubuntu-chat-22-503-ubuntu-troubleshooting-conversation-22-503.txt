@@ -1,0 +1,2 @@
+since it doesn't boot at all I don't know what logs I could look at
+@snerge, I don't know anything about your issue, I'm just offering general debugging advice.

@@ -1,0 +1,8 @@
+Well thats the odd thing, i never view my files in Naut
+I'm not sure what kind of problems you're having. Are you having issues with playing audio files, or audio from CD?
+Nono, im just saying i dont feel like tinkering with big distro stuff (like the desktop) at the moment, because a clean install (if needed) is not easy. So i'd rather just leave my system as is for now heh
+Eventually i need to format, so i can partition /home
+what issues are you having with amarok?
+well, you did mention that your files are playing double.
+...or are you getting duplicate entries in your audio library?
+Oh no, if i did i said it incorrectly. My bad. In my library, there are often 2 of the same song imported when i load up

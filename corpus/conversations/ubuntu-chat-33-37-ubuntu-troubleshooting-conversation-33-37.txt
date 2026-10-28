@@ -1,0 +1,8 @@
+run the tool
+yes, but how?
+try gparted in a terminal windows
+window
+in terminal window type   gparted
+how..? there is nothing installed :p
+your in the gui dektop on the live cd right?
+no, as i said, it just takes me to the initramfs shell and says that no drive is detected with the livecd data on it.

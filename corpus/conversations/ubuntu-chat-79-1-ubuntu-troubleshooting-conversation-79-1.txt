@@ -1,0 +1,15 @@
+so why are you tring to mount the andoid dir to your ubuntu box
+I have hacked the hell out of this android device and now it is a media server
+why not just hook up your usb cable aand transfer files
+it is not a phone
+there is a samba share app in the play that will make this a lot easier for you
+the share should have the same location since it is on the same server
+, so that is mostlikly your problem
+that isn't what I meant whoever any I pasted the actual smb.conf
+can you post your entire conf  i think i see  a problem
+that is the entire conf
+so remove the guest ok, guest only entries for eadh share ,  and add a list of users , that will allow  the user acces to the directory
+I don't have guest in global whoever
+I want guest in each share though whoever
+but you have guest account = root
+without the guest I will have to use credentials whoever

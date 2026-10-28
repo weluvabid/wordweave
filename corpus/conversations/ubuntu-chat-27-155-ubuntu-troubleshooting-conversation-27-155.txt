@@ -1,0 +1,2 @@
+no, you're misunderstanding
+i used to ubuntu built in "additional drivers" thing to switch, so it should have pulled that

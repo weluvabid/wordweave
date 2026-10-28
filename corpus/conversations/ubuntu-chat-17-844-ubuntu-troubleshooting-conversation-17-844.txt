@@ -1,0 +1,4 @@
+that makes no sense, why is it failing
+?? and ?
+then just sit there watching it and restart it
+hmm, its a python 5 liner, so ill just go ahead and write it ;) thx anyways.

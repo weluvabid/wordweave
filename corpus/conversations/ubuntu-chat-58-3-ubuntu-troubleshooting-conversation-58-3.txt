@@ -1,0 +1,5 @@
+try command not found
+dmesg | grep nm-applet |& curl -F "sprunge=<-" sprunge.us
+ok, next time when it crashes check dmesg or /var/log/syslog
+that last command ?
+dmesg | grep nm-applet |& curl -F "sprunge=<-" sprunge.u ?

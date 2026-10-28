@@ -1,0 +1,6 @@
+can you ls-a | grep  them
+or you can't see them in nautilus
+sounds good, i cant access my terminal at the moment as i am surface scanning the drive
+these files are also SAMBA shared btw
+ahhh
+i'm using a thrid party surface scan

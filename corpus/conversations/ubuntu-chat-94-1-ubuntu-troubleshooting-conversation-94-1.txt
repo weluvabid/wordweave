@@ -1,0 +1,10 @@
+hmmmm, build essential (what?)
+k, doing autoremove right now
+autoremove  what?
+so do i just click on extract?
+it opened another box and seems to show a path mikubuntu>desktop>________________ like i'm sposed to put a location in there
+wait   you extracted the package.... opened a terminal...cd  Desktop...then    cd celtx.... then typed   ./celtx & disown  ...yes?
+the tar.bz package on the desktop....did you right click that and  choose  "Extract here"
+this is a tar.bz2  package ...yes?
+huh??? :)
+i have that link here, i don't mind it like this as long as i know what i'm doing -- do i always have to do a two part launch?  like cd celtx and then the ./celtx ?

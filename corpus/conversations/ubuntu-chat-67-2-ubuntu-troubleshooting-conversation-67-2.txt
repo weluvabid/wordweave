@@ -1,0 +1,7 @@
+need to send the pgp key
+no man
+that just basic output xD
+pgp key is very big
+like this https://dylansserver.com/pubkey.pgp.asc
+I cannot see ~/.ssh/id_rsa.pub
+pen it with sudo cd ~/.ssh/

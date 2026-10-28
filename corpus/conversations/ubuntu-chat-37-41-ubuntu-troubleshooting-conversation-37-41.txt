@@ -1,0 +1,16 @@
+You dont need to.
+They work out of the box.
+CUPS, not CPUS - ok :)
+Take a look at the link, the permissions are stated there.
+I have done those and looked back at the ls... my perms still show the same
+you have done "those"?
+http://www.pasteall.org/57133
+you changed ownerships, not permissions. And you wildly just shot at ownerships, using chown -rR
+I did what that page said
+And looking into two different directories will show different results.
+you did follow the post stating "I have a problem" - but you did not follow the answer.
+those are the same directory
+So read the answer in that post carefully and see the fixed permissions and ownerships there.
+did you not see the code I showed you bekk
+I did, but you did not notice the different permissions/owenships between the link and the paste of your system.
+i pasted what was on the page, if it was wrong, I don't know enough to fix it

@@ -1,0 +1,4 @@
+is it the package manager you don't like from Fedora? Because visually it can look just like any other distro
+i really dont know much about ubuntu since ive been supporting RHEL/CentOS since 2004
+its not even about rpm vs dpkg, its more that somehow someone took the time to make ubuntu prettier. im not sure why this hasnt been done with fedora
+as you can just map your existing rpm knowledge to dpkg/apt

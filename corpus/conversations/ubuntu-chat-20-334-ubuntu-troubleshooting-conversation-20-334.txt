@@ -1,0 +1,6 @@
+i dunno, try reinstall?  sudo apt-get install --reinstall proftpd
+at least i just installed it and its there
+no conf file and i reinstalled
+man proftpd
+didnt help me at all ... how do i make a conf file or remake it
+what was the command to copy the file

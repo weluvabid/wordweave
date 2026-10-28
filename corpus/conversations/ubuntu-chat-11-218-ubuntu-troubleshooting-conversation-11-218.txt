@@ -1,0 +1,1 @@
+I m not stupid which fileexec : /usr/bin/fileexec , file /usr/bin/fileexec ELF 32-bit LSB executable, Intel 80386, version 1 for GNU/Linux 2.2.5, dynamically linked

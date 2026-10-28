@@ -1,0 +1,15 @@
+what do you mean
+mouse buttons? thought it was for keys... lol
+what are you binding it to and what wm are you using? maybe you can set it there...
+no, I don't want to have to press a key with a mouse button, I just want mouse
+I can't make two buttons work at the same time to trigger an app
+oh I thought you wanted to DO something.. check your /etc/X11/xorg.conf file if your mouse is using synaptics driver
+I am asking about xbindkey ofcourse I want to DO something
+DO something = run a command with an action
+why synaptics now? I didn't mention anything about synaptics
+DO something = run a command with an action
+isn't xbindkey obvious enough?
+don't you use xbindkey to DO something?
+whats your question
+you want to open everything by clicking both mouse buttons at the same time?
+I want to make xbindkey open the intended program with two mouse buttons at the same time

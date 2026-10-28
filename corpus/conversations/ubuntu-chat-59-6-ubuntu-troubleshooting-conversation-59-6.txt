@@ -1,0 +1,14 @@
+if you want help - talk clearly without "l33t haxor" nonsnese, tell us what you where REALLY doing
+just like, hacking around in linux? trying to install these 4 libraries really: http://paste.laravel.com/Mey
+hacking around ??? just tell us the truth/clearly
+yes those 4 libraries
+no, tell us what you did
+zoiss: not "those 4 libraries" - they are not commands/process - they are words
+should I continue installing these dependencies?
+no, you should not in my opinion as you should not be trying to install a 12.04 package in 13.04
+why? they're current packages
+so ?
+so any package i want to install should be ok?
+where does that logic come from ???
+ok, i'm talking about the packages dependencies
+they mean nothing

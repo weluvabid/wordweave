@@ -1,0 +1,3 @@
+the "right" ones?
+what do you mean oss?
+oss refers to open sound system which most use alsa now but oss for debugging and emulation purposes

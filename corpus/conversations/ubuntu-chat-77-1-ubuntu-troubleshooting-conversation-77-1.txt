@@ -1,0 +1,11 @@
+I mean to remove the packages not install them
+you mean apt-get remove packet?!
+yes
+this is what i did, and this message appears
+Done it?
+sry, how can i delete them all at once?
+"sudo -rf /var/lib/dpkg/info/texlive-latex-extra-doc*"
+yes but i dont get it, i allways get the help message of rf^^
+What you mean?
+sry
+sry my fault

@@ -1,0 +1,3 @@
+that's what's driving me nuts: AFAICT, the live CD gives the same error
+right now I'm in my laptop (the problem is in my desktop)
+of course that would not cause problems with a live cd

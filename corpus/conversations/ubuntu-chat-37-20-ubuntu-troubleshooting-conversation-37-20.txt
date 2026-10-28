@@ -1,0 +1,5 @@
+there mail icon is there, so it seems i already have the indicator applet
+if you see mail that is correct.  did you try to uninstall pulse audio or something?  how did you loose it?
+doesn't show any broken packages!  try "sudo apt-get install indicator-sound" again
+indicator-applet is already the newest version.
+indicator-applet or indicator-sound?

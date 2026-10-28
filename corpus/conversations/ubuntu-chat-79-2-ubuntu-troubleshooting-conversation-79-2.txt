@@ -1,0 +1,9 @@
+do i need to use do-release-upgrade -d?
+stop
+i entered the command exactly as you requested adn double-checked
+i bet you sorted for "ii"
+no i did *exactly* as you requested
+so that is a special setup?
+do-release-upgrade -d?
+stop!
+i am on trusty, but my kernel is 3.11

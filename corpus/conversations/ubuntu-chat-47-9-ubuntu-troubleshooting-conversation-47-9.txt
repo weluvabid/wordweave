@@ -1,0 +1,2 @@
+so you're trying to connect from a client on your desktop to an ftp server running on your phone
+(just to clarify)

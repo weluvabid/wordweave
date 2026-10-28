@@ -1,0 +1,4 @@
+right... like I have /dev/sda1 for my new partition
+but the blkid specifies the device... not "sda5".
+so the uuid refers to sdaX mounted temprarily as /media/home
+right... but, there's no need to mention sdaX since the UUID is the device.  This is what's confusing to me.  sdaX doesn't actually factor in at all...... yes?

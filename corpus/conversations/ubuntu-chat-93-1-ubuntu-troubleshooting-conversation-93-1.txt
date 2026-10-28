@@ -1,0 +1,12 @@
+trying to log into the desktop
+I know, but is it Gnome, Fluxbox, KDE, etc.?
+what ever default is, its a fresh install
+ubuntu, kubuntu, xubuntu?
+let me understand you: when you ran "gnome-session" from the recovery console, it logged you into gnome?
+i exited the terminal, loged in under safe mode
+and in that file you are asking about the part where exec is it says gnome desktop
+yeah, that's the name of the program that the login screen should run after it checks your password
+so I'm just asking you to run it manually to see if it gives an error message in the recovery console
+oh
+how can i get my nic to work in safe mode so i can try and dl the updates
+about your 2nd question - I don't know what you're talking about... sorry

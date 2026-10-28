@@ -1,0 +1,2 @@
+click on system/admin/synaptic, and then search for your package.
+i mean on the web.. i'm running 6.10 server

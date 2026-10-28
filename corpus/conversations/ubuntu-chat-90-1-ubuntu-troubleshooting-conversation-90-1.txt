@@ -1,0 +1,2 @@
+okay i did that only i used rausb0 instead
+Hmm that;s strange, the fact that it's listed as rausb suggests to me that it's a raling chipset of some sort, which is usually a good thing. But they normally just work

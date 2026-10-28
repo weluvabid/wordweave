@@ -1,0 +1,2 @@
+you mean that i belong to the admin group?
+no, so you can edit the groups, you need to add their group to your list of groups

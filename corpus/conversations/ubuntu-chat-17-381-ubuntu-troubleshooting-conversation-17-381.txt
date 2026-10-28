@@ -1,0 +1,2 @@
+you just said you are able to login using tty
+I cannot log in using tty, I have to restart into single user mode

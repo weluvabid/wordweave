@@ -1,0 +1,5 @@
+vlc does support bin files.....
+wish someone would pay attention to my problem :(
+which is ?
+where ? in just ubuntu or starting up ?
+gotta hate the case sensitive :P /etc/X11/xorg.conf

@@ -1,0 +1,1 @@
+Your network settings are probably just messed up. Please take a look at your current network connection in Network Manager, and correct the settings if necassery.

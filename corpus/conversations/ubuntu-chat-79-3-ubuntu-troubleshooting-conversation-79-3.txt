@@ -1,0 +1,6 @@
+you need to restart and maybe hold down the delete key, it kinda depends on the bios
+yeah i know how to get into bios
+but where in the bios would i check
+how would i check the iso image on a windows system
+is there a program to do that in windows
+do what ?

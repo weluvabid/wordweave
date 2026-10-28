@@ -1,0 +1,6 @@
+My kernel?
+I did upgrade to 10.10, so what do I have to do?
+ok then install it
+after you upgraded to 10.10, you install the new version of virtualbox?
+How do I ping my local server address?
+I don't know how to check that :/

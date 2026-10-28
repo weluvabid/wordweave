@@ -1,0 +1,4 @@
+where can I find out where tvtime gets it's composite input?
+not sure, it should be a seperate device file in /dev/
+/dev/video(n)
+I know, but how do I know which device is the composite?

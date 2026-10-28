@@ -1,0 +1,10 @@
+he cursor never changed ... I hovered the mouse over the icon and the mouse pointer changed to a cross/bullseye.  Clicked the icon .. there was no output of any kind.
+click on the app's window not icon. window
+no value at all?
+well yeah ... I didn't paste it. :)
+yes, let me look in there --- .wine you mean?
+no, actually in ~/.local/share/applications
+and you click on those 20 each time and for what purpose
+?
+to run the exe's ... I haven't yet created a batch file to do so which is on my todo list.
+can't you just click 20 times the same .exe

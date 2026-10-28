@@ -1,0 +1,8 @@
+Ive never seen apt freeze up like this. Im assuming its the flash package is incompatible with 9.10 as of yet. Would you agree?
+1 sec have to log out and back. Gdebi frozen window.
+??
+what happened?
+What was the line you typed that unfroze my package management again?
+eh?
+you don't need to do this again
+I tried reinstalling with gdebi and apt froze back up.

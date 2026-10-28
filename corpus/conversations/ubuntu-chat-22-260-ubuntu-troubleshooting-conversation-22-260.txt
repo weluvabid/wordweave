@@ -1,0 +1,7 @@
+you may need to install restricted drivers or use ndiswrappers for your wireless card
+but why has it disappeared...?
+oh... OK if it's common, I guess there must be a reason why it disappeared.. anyway, what exactly do I do now?
+I have another problem...similar let's say. but this one bothered me even when I was able to choose a wireless connection. Anyway, should there be a PPPoE connection among all the wireless connections, if I created one earlier?
+I may be wrong but I believe PPP is for Dialup. Not needed for wireless on broadband networks
+because at home, to connect to my provider, I have to first connect to the router (which I was able to do before the phreakin icon disappeared), and then dial the PPPoE/DSL connection. I did manage to set up the DSL connection, but I couldn't find anywhere to choose it, to connect to it... :/
+I use broadband and never had such issues. It may be DSL requirement

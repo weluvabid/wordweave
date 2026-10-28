@@ -1,0 +1,9 @@
+my computer is Lucid Lynx on Dell dimension
+its 2.5 <unconvertable> Fujitsu
+a card and the cables are likely to be expensive
+very expensive
+is it a ATA/100 type/
+or ATA-6
+a card might look like this:    http://www.tech-faq.com/hba.html
+I am looking for a USB connector to connect to this HD...or if I can make it a slave on SATA
+http://www.youtube.com/watch?v=TrKLX-47rv4

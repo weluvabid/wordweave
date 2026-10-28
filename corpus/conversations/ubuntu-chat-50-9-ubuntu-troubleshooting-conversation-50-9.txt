@@ -1,0 +1,9 @@
+I just answered that question.
+oh i get it
+you're being sarcastic
+no
+not at all.
+never shows the loading splash
+that's what it doesn't do.  what does it do?
+starts gconfd, dbus, and ssh-agent
+ok, good, but what do you see on the screen?

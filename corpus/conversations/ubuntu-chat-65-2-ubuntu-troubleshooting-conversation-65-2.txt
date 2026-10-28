@@ -1,0 +1,5 @@
+are you talking about more than 1 machine?
+yes, I am now in a desktop machine controling the server throught shh
+ah.. that explains
+we're editing files on the wrong side of it ..
+yeah..but is is not what I wanted...I can't do this in every machine, this is oging tobe a local network web tool, and anyone can access it...I saw this in another company, they where just puting the name of the machine in the browser

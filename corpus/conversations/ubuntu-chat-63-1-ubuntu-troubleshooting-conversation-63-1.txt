@@ -1,0 +1,5 @@
+Sorry, I realized this would take a while. Open a terminal instead and do: "groups user", but replace user with your username
+The output should be one line, you can paste here.
+dmesg?
+don't know what dmesg is
+Open terminal and type in "dmesg" you can post the output to pastebin. Your xorg was very different from any I've seen. Don't know where to start or what to look for in it. Sorry.

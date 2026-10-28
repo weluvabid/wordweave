@@ -1,0 +1,4 @@
+what other command...
+what do you mean when you say "doesn't work"?  What actually happened?
+I don't get it, I'm trying to open the terminal now, and I don't get anything
+you have to say what you are actually doing, I'm not looking over your shoulder to see the commands you are inputting
