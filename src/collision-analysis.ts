@@ -91,7 +91,7 @@ export function analyzeCorpusCollection(
     throw new TypeError("Corpus documents must be an array");
   }
 
-  const analyses = documents.map(({ label, text }) => analyzeCorpus(label, text));
+  const analyses = documents.map(({ label, text }: CorpusDocument) => analyzeCorpus(label, text));
   const sourceTotals = new Map<string, SourceCollisionCount>();
 
   for (const analysis of analyses) {

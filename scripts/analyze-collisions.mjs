@@ -4,13 +4,20 @@ import { extname, join, relative, resolve } from "node:path";
 import process from "node:process";
 import { analyzeCorpusCollection } from "../dist/collision-analysis.js";
 
-const SKIPPED_DIRECTORIES = new Set([".git", "node_modules", "dist", "coverage", "target", ".next"]);
 const TEXT_EXTENSIONS = new Set([
-  ".txt", ".md", ".html", ".htm", ".json", ".csv", ".xml", ".rst", ".log",
+  ".txt",
+  ".md",
+  ".html",
+  ".htm",
+  ".json",
+  ".csv",
+  ".xml",
+  ".rst",
+  ".log",
 ]);
 
 function usage() {
-  console.error(
+  process.stdout.write(
     "Usage: npm run analyze:collisions -- <file-or-directory> [--json <report.json>]\n" +
       "Directories are scanned recursively for common text-file extensions.",
   );
@@ -69,7 +76,13 @@ function markdownReport(result) {
     }
   }
 
-  lines.push("", "## Per-document results", "", "| Document | Tokens | Collisions | Per million tokens |", "| --- | ---: | ---: | ---: |");
+  lines.push(
+    "",
+    "## Per-document results",
+    "",
+    "| Document | Tokens | Collisions | Per million tokens |",
+    "| --- | ---: | ---: | ---: |",
+  );
   for (const item of result.documents) {
     lines.push(
       `| ${item.label.replaceAll("|", "\\|")} | ${item.tokenCount} | ${item.collisionCount} | ${item.collisionsPerMillionTokens.toFixed(3)} |`,

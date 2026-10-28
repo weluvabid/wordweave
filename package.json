@@ -19,8 +19,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build",
-    "analyze:collisions": "npm run build && node scripts/analyze-collisions.mjs",
-    "corpus:fetch": "node scripts/fetch-corpus.mjs"
+    "analyze:collisions": "npm run build && node scripts/analyze-collisions.mjs"
   },
   "devDependencies": {
     "@eslint/js": "9.39.0",
