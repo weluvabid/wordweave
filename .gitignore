@@ -29,8 +29,5 @@ Thumbs.db
 playwright-report/
 test-results/
 
-# Downloaded corpus content (keep corpus/manifest.json for provenance)
-corpus/literature/
-corpus/technical/
-corpus/general/
+# Generated analysis output
 collision-report.json

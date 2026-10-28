@@ -391,7 +391,8 @@ async function main() {
       [
         "Usage: npm run corpus:fetch",
         "",
-        "Downloads public-domain literature, Python documentation, and Wikipedia prose into ./corpus.",
+        "Downloads public-domain literature and Python documentation into ./corpus.",
+        "Wikipedia prose is optional; pass --wikipedia to attempt collection (rate limits may apply).",
         "The operation is resumable; see corpus/manifest.json for source, license, revision, and SHA-256 metadata.",
       ].join("\n"),
     );
@@ -401,7 +402,11 @@ async function main() {
   const manifest = await readManifest();
   await fetchLiterature(manifest);
   await fetchTechnical(manifest);
-  await fetchGeneral(manifest);
+  if (process.argv.slice(2).includes("--wikipedia")) {
+    await fetchGeneral(manifest);
+  } else {
+    log("\n[General prose] Skipped (pass --wikipedia to enable Wikipedia requests)");
+  }
   await writeManifest(manifest);
   printSummary(manifest);
 }
