@@ -12,7 +12,7 @@ There are plenty of conventional ways to alter text. A message could replace cha
 
 WordWeave takes a different approach: make the encoded representation look like ordinary language. Its reserved phrases are made from carefully selected words, not arbitrary combinations. The vocabulary is constructed with entropy in mind, aiming to make accidental appearances in everyday writing exceptionally unlikely while keeping the output readable as a phrase.
 
-That choice is particularly relevant to the original game-chat idea. In practical use on a restrictive platform, ordinary-looking phrases have a better chance of blending into the surrounding conversation than conspicuous symbol-heavy substitutions. WordWeave has also been tried directly in a platform environment over a considerable period without encountering a block. That's encouraging real-world experience alongside the corpus analysis, but I can't claim with confidence that every platform or every message will behave identically.
+That choice is particularly relevant to the original game-chat idea. In practical use on a restrictive platform, ordinary-looking phrases have a better chance of blending into the surrounding conversation than conspicuous symbol-heavy substitutions. WordWeave has also been tried directly in a platform environment over a considerable period without encountering a block.
 
 ## The mathematics behind four words
 
